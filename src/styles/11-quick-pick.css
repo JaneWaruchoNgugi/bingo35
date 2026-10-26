@@ -1,0 +1,80 @@
+/*
+ * Instant play: casino chips, one colour per stake, that deal four cards for confirmation,
+ * and the manual "Pick your cards" button shaped like a ticket.
+ */
+.qpick{display:flex;flex-direction:column;gap:.55em;container-type:inline-size}
+.qhead{display:flex;align-items:center;justify-content:space-between;gap:.6em;flex-wrap:wrap}
+.qlabel{display:inline-flex;align-items:center;gap:.35em;font:800 .78em var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--gold2)}
+.qlabel svg{width:1.25em;height:1.25em;fill:var(--gold2);stroke:#7a4b00;stroke-width:1.5;filter:drop-shadow(0 0 4px #ffcf4a99)}
+.qmeta{font:700 .7em var(--display);letter-spacing:.06em;text-transform:uppercase;color:#cefaeb;padding:.25em .7em;border-radius:99px;background:#ffffff10;border:1px solid #ffffff1f;white-space:nowrap}
+.qchips{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.35em,3cqw,.9em);padding-bottom:.25em}
+
+/* the chip: striped rim, coloured face, dashed inlay, stake in the middle */
+.qchip{--c:#44eaa8;--d:#129c68;--t:#ffffff;position:relative;width:100%;max-width:6.2em;aspect-ratio:1;justify-self:center;padding:0;border:0;border-radius:50%;cursor:pointer;color:var(--t);
+ background:radial-gradient(circle,#00000000 0 63%,#00000044 64% 66%,#00000000 67%),repeating-conic-gradient(from 11deg,#ffffff 0 14deg,var(--c) 14deg 45deg);
+ box-shadow:0 .28em 0 var(--d),0 .45em .8em #000000bb,inset 0 0 0 .14em #00000033;
+ transition:transform .18s cubic-bezier(.3,1.6,.5,1),box-shadow .18s,filter .18s}
+.qchip::before{content:"";position:absolute;inset:17%;border-radius:50%;background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--c) 70%,#ffffff),var(--c) 55%,var(--d));box-shadow:inset 0 .12em .25em #ffffff66,inset 0 -.15em .3em #00000055}
+.qchip::after{content:"";position:absolute;inset:24%;border-radius:50%;border:.1em dashed #ffffffb3}
+.qcoin{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;line-height:1;text-shadow:0 1px 2px #00000088}
+.qcoin small{font:800 .5em var(--display);letter-spacing:.08em;opacity:.9}
+.qcoin b{font:900 1.15em var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.qchip:nth-child(1){--c:#2be793;--d:#0f8b55}
+.qchip:nth-child(2){--c:#ef3b4f;--d:#8c1325}
+.qchip:nth-child(3){--c:#1fbf6a;--d:#0b6a39}
+.qchip:nth-child(4){--c:#f6b93b;--d:#8a5a00;--t:#2b1a00}
+.qchip:nth-child(4) .qcoin{text-shadow:0 1px 0 #ffffff88}
+.qchip:hover:not(:disabled){transform:translateY(-.22em) rotate(-8deg);box-shadow:0 .5em 0 var(--d),0 .8em 1.1em #000000cc,0 0 1.1em var(--c)}
+.qchip:active:not(:disabled){transform:translateY(.15em) scale(.95);box-shadow:0 .1em 0 var(--d),0 .2em .4em #000000bb}
+.qchip:focus-visible{outline:.15em solid #ffffff;outline-offset:.2em}
+.qchip:disabled{filter:grayscale(.85) brightness(.6);cursor:default;box-shadow:0 .2em 0 #00000088}
+
+/* the ticket button: notched ends, a perforation line by the icon, a shine that sweeps across */
+.pickbtn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.7em;padding:.8em 1.5em .8em 1.3em;border:0;border-radius:.45em;overflow:hidden;color:#2b1a00;font:800 1.05em var(--display);letter-spacing:.01em;
+ background:linear-gradient(180deg,#ffe58a,#f6b93b 55%,#e8962a);box-shadow:none;
+ -webkit-mask:radial-gradient(circle at 0 50%,#00000000 .55em,#000000 .58em) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,#00000000 .55em,#000000 .58em) right/51% 100% no-repeat;
+ mask:radial-gradient(circle at 0 50%,#00000000 .55em,#000000 .58em) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,#00000000 .55em,#000000 .58em) right/51% 100% no-repeat;
+ transition:transform .15s,filter .15s}
+.pickbtn svg{flex:none;width:1.3em;height:1.3em;stroke-width:2.2}
+.pickbtn svg+span{padding-left:.75em;border-left:.12em dashed #7a4b0099}
+.pickbtn::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,#ffffff00,#ffffffbb,#ffffff00);transform:skewX(-20deg);animation:tkshine 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes tkshine{0%,55%{left:-40%}85%,100%{left:130%}}
+.pickbtn:hover:not(:disabled){filter:brightness(1.07) drop-shadow(0 0 .6em #ffcf4a)}
+.pickbtn:active:not(:disabled){transform:scale(.97)}
+.pickbtn:disabled{filter:grayscale(.6) brightness(.7)}
+.pickbtn:disabled::after{display:none}
+#takebtn:disabled{opacity:.75;cursor:default}
+
+.mpick{display:none}
+/* desktop: chips and ticket sit in the status panel beside the countdown */
+@media(min-width:900px){
+ .leftp{height:28.5%!important;grid-template-rows:auto auto auto auto 1fr!important}
+ .leftp .ring{grid-row:2/6!important}
+ .leftp .qpick{grid-column:2;margin-top:.45em;gap:.45em}
+ .leftp .qchip{grid-column:auto;align-self:auto;font-size:.95em}
+ .leftp .qhead{gap:.3em}
+ .leftp .qmeta{font-size:.62em;padding:.2em .55em}
+ .leftp .pickbtn{width:100%;font-size:.95em;padding:.7em .9em;gap:.5em;white-space:nowrap}
+ .leftp .pickbtn svg+span{padding-left:.55em;overflow:hidden;text-overflow:ellipsis}
+ .tkp{top:40.7%!important;height:58.1%!important}
+}
+/* phone and tablet: one framed tray under the machine with chips on top and the ticket below */
+@media(max-width:899px){
+ .mpick{order:1;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:520px;margin:-4px auto 0}
+ .mpick .qpick{width:100%;padding:10px clamp(10px,3vw,16px) 12px;border-radius:16px;font-size:clamp(12px,3.6vw,15px);
+  background:linear-gradient(180deg,#10503ef2,#0a3023f2) padding-box,linear-gradient(135deg,#ffd36e,#5fedcd 45%,#46eaa2) border-box;border:1.5px solid #00000000;box-shadow:0 6px 18px #000000aa}
+ .mpick .mbtn.pickbtn{position:static;transform:none;width:min(100%,360px);font-size:clamp(15px,4.4vw,18px);padding:.8em 1.4em .8em 1.2em;border-radius:.45em;background:linear-gradient(180deg,#ffe58a,#f6b93b 55%,#e8962a)}
+ .mpick .mbtn.pickbtn:not(:disabled){display:inline-flex}
+ .mpick:has(.mbtn:disabled):has(.qchip:disabled) {display:none}
+ .mpick:has(.mbtn:disabled) .qpick{display:none}
+}
+/* tablet: chips and ticket side by side in one row */
+@media(min-width:600px) and (max-width:899px){
+ .mpick{flex-direction:row;align-items:stretch;max-width:720px;gap:12px}
+ .mpick .qpick{flex:1 1 auto;font-size:14px}
+ .mpick .qchip{max-width:5.6em}
+ .mpick .mbtn.pickbtn{width:auto;flex:0 0 auto;align-self:stretch;font-size:16px;flex-direction:column;gap:.35em;padding:.8em 1.6em}
+ .mpick .mbtn.pickbtn svg{width:1.6em;height:1.6em}
+ .mpick .mbtn.pickbtn svg+span{padding:.35em 0 0;border-left:0;border-top:.12em dashed #7a4b0099}
+}
+@media(prefers-reduced-motion:reduce){.pickbtn::after{display:none}.qchip{transition:none}}

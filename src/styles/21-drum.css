@@ -1,0 +1,11 @@
+/* The drum machine: layers over the shared .gobj box (the canvas is placed by Drum.tsx). */
+.gobj.drum canvas{height:auto}
+.gobj.drum .drum-b{z-index:1}
+.gobj.drum .drum-f{z-index:3}
+.gobj.drum .drum-glow{opacity:.15;transition:opacity .4s}
+.gobj.drum.swirl .drum-glow{opacity:.7}
+/* drawn balls in the slots: bigger than the globe's holes, so the numbers read at a glance */
+.hero .gobj.drum .tray .tb{font-size:2.3cqw;width:5.4em;height:5.4em;margin:-2.7em 0 0 -2.7em}
+.hero .gobj.drum .tray .tb small{font-size:1.05em}
+.hero .gobj.drum .tray .tb b{font-size:1.5em;letter-spacing:-.02em}
+.hero .gobj.drum .pb{width:5.8%!important;font-size:1.02cqw}

@@ -1,0 +1,89 @@
+/*
+ * BINGO35 round panel: a gold dial beside the round's name and counts, an ornament line,
+ * gold coin stakes and a gold "Pick your cards" button (shared by the phone stake box).
+ */
+.leftp.rp{gap:.85em!important;padding:1.1em 1em 1em!important;background:radial-gradient(120% 70% at 0 0,#14563a66,#0000 60%),linear-gradient(180deg,#0b2619,#041009)!important}
+.rp .rtop{display:grid;grid-template-columns:auto 1fr;gap:1em;align-items:center}
+/* the dial: a gold track filling round, an emerald face with serif digits */
+.rdial{--p:360deg;position:relative;width:7.4em;aspect-ratio:1;border-radius:50%;padding:.42em;background:conic-gradient(from 0deg,#f8d77c,#e2ad3e var(--p),#ffffff14 var(--p));box-shadow:0 0 0 1.5px #c9a24a,0 0 1.4em #e2ad3e33,inset 0 0 0 1px #0006;transition:background .9s linear}
+.rdial::after{content:'';position:absolute;inset:-.32em;border-radius:50%;border:1px dashed #c9a24a66;pointer-events:none}
+.rface{width:100%;height:100%;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 30%,#17603f,#06281a 70%);box-shadow:inset 0 2px 6px #000a,inset 0 0 0 1px #f8d77c55}
+.rface small{font:800 .58em var(--display);letter-spacing:.16em;text-transform:uppercase;color:#c9b98a}
+.rface b{font:900 1.65em/1.05 var(--crown);color:#fff6dc;font-variant-numeric:tabular-nums;letter-spacing:.02em;text-shadow:0 0 .6em #f8d77c55}
+.rp.draw .rface b{font-size:2.1em;color:#f8d77c}
+.rp.buy .rface .timer{font-size:1.55em}
+/* round name, sub line and the two counts */
+.rinfo{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.rinfo .lpill{margin-bottom:.35em}
+.rtitle{margin:0;font:900 1.45em/1.1 var(--crown);color:#fff6dc;letter-spacing:.03em}
+.rsub{margin:.1em 0 .55em;font:700 .78em var(--display);color:#9fd8b8;letter-spacing:.04em}
+.rp.draw .rsub{color:#ff9aa5}
+.rstats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.3em;width:100%}
+.rstats li{display:flex;align-items:baseline;gap:.4em;font:700 .8em var(--display);color:var(--mut)}
+.rstats svg{width:1.15em;height:1.15em;color:#f8d77c;align-self:center}
+.rstats b{font:800 1.2em var(--display);color:var(--fg);font-variant-numeric:tabular-nums}
+/* gold ornament line with a crown in the middle */
+.rorn{display:flex;align-items:center;gap:.6em;color:#e2ad3e}
+.rorn::before,.rorn::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,#0000,#c9a24a)}
+.rorn::after{background:linear-gradient(90deg,#c9a24a,#0000)}
+.rorn svg{width:1.1em;height:1.1em}
+
+/* stakes: gold coins with a coloured inner ring, the total under each */
+.stakes .stk{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;gap:.4em!important;border-radius:0!important}
+.stk .coin{--b:#2f7bf0;position:relative;width:100%;max-width:5.2em;aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ background:radial-gradient(circle,#123f2b 0 54%,#0000 55%),radial-gradient(circle,var(--b) 0 62%,#0000 63%),radial-gradient(circle at 35% 25%,#fff3c0,#f3c45a 35%,#b98222 70%,#7a4f0c);
+ box-shadow:0 4px 10px #000a,inset 0 0 0 1px #fff3,0 0 0 1px #7a4f0c}
+.stk .coin::before{content:'';position:absolute;inset:9%;border-radius:50%;border:1px dashed #fff8e166}
+.stk.s0 .coin{--b:#2f7bf0}.stk.s1 .coin{--b:#ef3b4f}.stk.s2 .coin{--b:#1fbf6a}.stk.s3 .coin{--b:#f2b431}
+.stk .coin small{position:relative;font:800 .52em var(--display);letter-spacing:.14em;color:#d9cfa8}
+.stk .coin b{position:relative;font:900 1.35em/1 var(--crown)!important}
+.stk em{margin:0!important;padding:.2em .55em!important;width:auto!important;border:0!important;border-radius:99px;background:#ffffff0d;font:800 .62em var(--display)!important;color:#e8dcb5!important}
+.stk:hover:not(:disabled) .coin{box-shadow:0 6px 14px #000a,0 0 1em #f3c45a66,inset 0 0 0 1px #fff5,0 0 0 1px #7a4f0c}
+.stk:hover:not(:disabled){transform:translateY(-3px) rotate(-3deg)!important;filter:none!important}
+
+/* Pick your cards: solid gold with dark lettering */
+.pickbtn{background:linear-gradient(180deg,#fbe39a,#e9b648 50%,#c08a27)!important;border:1px solid #fff1b8!important;color:#2b1a00!important;box-shadow:0 6px 16px #0009,0 0 1.2em #e2ad3e44,inset 0 1px 0 #fff8!important;font-weight:900!important}
+.pickbtn svg{color:#5a3a06!important}
+.pickbtn span{color:#2b1a00!important}
+.pickbtn:disabled{background:#ffffff10!important;border-color:#c9a24a44!important;box-shadow:none!important}
+.pickbtn:disabled span,.pickbtn:disabled svg{color:#8a9a90!important}
+
+/* phone and tablet: the machine has its own timer and the stake box sits under it, so the round panel is hidden */
+@media(max-width:899px){
+ .leftp.rp{display:none!important}
+ .mpick .stk .coin{max-width:4.6em}
+ .mpick .stk .coin b{font-size:1.5em!important}
+}
+/* tablet: stakes above the button, the same width as the machine */
+@media(min-width:600px) and (max-width:899px){
+ .mpick{flex-direction:column!important;align-items:stretch!important;max-width:520px!important}
+ .mpick .mbtn.pickbtn{flex-direction:row!important;gap:.6em!important;padding:.85em 1.4em!important;font-size:18px!important}
+ .mpick .mbtn.pickbtn svg+span{padding:0 0 0 .2em!important;border:0!important}
+}
+/* stakes as real casino chips: striped edge inserts, a gold ring and a dark inlay with gold value,
+   in deep table colours (emerald, burgundy, royal blue, and black for the top stake) */
+.stk .coin{--c:#0f6b42;--d:#073a24;--spot:#f4ead0;
+ background:radial-gradient(circle,var(--d) 0 49%,#0000 50%),radial-gradient(circle,#0000 0 53%,#e9c46a 54% 57%,#0000 58%),repeating-conic-gradient(from -11.25deg,var(--c) 0 33.75deg,var(--spot) 33.75deg 45deg)!important;
+ box-shadow:inset 0 0 0 .22em var(--c),inset 0 0 0 .3em #0005,0 5px 12px #000b,0 0 0 1px #000a!important}
+.stk .coin::before{inset:24%!important;border:1px dashed #e9c46a88!important}
+.stk .coin::after{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(160deg,#ffffff38,#0000 45%,#0003);pointer-events:none}
+.stk.s0 .coin{--c:#0f6b42;--d:#06301e}
+.stk.s1 .coin{--c:#8e1b2c;--d:#3d0a13}
+.stk.s2 .coin{--c:#1f3f8f;--d:#0b1a40}
+.stk.s3 .coin{--c:#151515;--d:#050505;--spot:#e9c46a}
+.stk .coin small{color:#f4ead0!important;opacity:.8}
+.stk:hover:not(:disabled) .coin{box-shadow:inset 0 0 0 .22em var(--c),inset 0 0 0 .3em #0005,0 8px 16px #000b,0 0 1em #e9c46a55,0 0 0 1px #000a!important}
+/* SVG casino chips */
+.stk .chip{display:block;width:100%;max-width:5.4em;height:auto;filter:drop-shadow(0 6px 8px #000a);transition:transform .18s,filter .18s}
+.stk .chip .chk{font:800 7px var(--display);letter-spacing:1.6px;fill:#f4ead0;opacity:.85}
+.stk .chip .chv{font:900 24px var(--crown);fill:#f8d77c;paint-order:stroke;stroke:#0008;stroke-width:1.2px}
+.stk .chip .chv.w3{font-size:19px}
+.stk:hover:not(:disabled) .chip{transform:translateY(-4px) rotate(-6deg);filter:drop-shadow(0 10px 12px #000b) drop-shadow(0 0 10px #e9c46a55)}
+.stk:hover:not(:disabled){transform:none!important}
+.stk:active:not(:disabled) .chip{transform:scale(.94)}
+.stk em{font-weight:700!important;color:#bfb38e!important;background:#00000040!important;border:1px solid #c9a24a33!important}
+.stk em b{color:#f8d77c;font-weight:900}
+.mpick .stk .chip{max-width:5em}
+.stk em b{font:inherit!important;font-weight:900!important;background:none!important;-webkit-text-fill-color:#f8d77c;color:#f8d77c!important}
+.stk .chip .chv{font-size:27px}
+.stk .chip .chv.w3{font-size:21px}

@@ -1,0 +1,56 @@
+/*
+ * Card picker: a 3D carousel floating over the dimmed game. Timer ring and title on top, one card
+ * large in the middle with its neighbours tilted either side, then the arrows and Take button, the
+ * four slots, and Cancel / Confirm. One column on every screen, sized to the screen.
+ */
+.modal.pc{background:#0a3326f5!important;gap:clamp(10px,2.2svh,18px)!important;padding:16px!important;overflow:hidden}
+.modal.pc.open>*{animation:none}
+
+/* header */
+.pc .mh{display:flex;align-items:center;gap:14px}
+.pc .mring{width:clamp(56px,8svh,68px);flex:none}
+.pc .mring div{width:82%;background:#0c3a2c;color:#ffffff;font:800 clamp(18px,3svh,24px) var(--display)}
+.pc .mring div.nx{font-size:12px;letter-spacing:.06em}
+.pc .demo{display:block;font:800 11px var(--display);letter-spacing:.24em;color:var(--gold2);margin-bottom:2px}
+.pc .mh h2{font:800 clamp(20px,3.4svh,26px)/1.1 var(--display);color:#ffffff}
+.pc .mh small{display:block;margin-top:3px;font:700 13px var(--display);color:var(--gold2)}
+
+/* carousel */
+.pc .car{--cw:clamp(170px,min(46vw,30svh),230px);max-width:none;width:100%;height:calc(var(--cw) * 1.24);perspective:1000px}
+.pc .cc{width:var(--cw);margin:calc(var(--h,0px) / -2) 0 0 calc(var(--cw) / -2);padding:9px 9px 16px;border:2px solid #4bb893;border-radius:14px;background:#15523e;box-shadow:0 14px 30px #00000099;transition:transform .45s cubic-bezier(.2,.9,.25,1.05),opacity .35s,border-color .2s}
+.pc .cc.mid{border-color:#8cf2d0;box-shadow:0 14px 30px #00000099;animation:none}
+.pc .cc.picked,.pc .cc.picked.mid{border-color:#3fd77f;box-shadow:0 0 0 1px #3fd77f66,0 14px 30px #00000099}
+.pc .cc .grid5{gap:3px}
+.pc .cc .hd{border-radius:4px;font:800 clamp(9px,calc(var(--cw) * .06),13px) var(--display);padding:3px 0}
+.pc .cc .c{aspect-ratio:1.15;display:grid;place-items:center;border-radius:4px;color:#ffffff;font:800 clamp(11px,calc(var(--cw) * .085),18px) var(--display);background:#ffffff06}
+.pc .cc .c.f{color:var(--gold)}
+.pc .cc .c.hot{color:#ffb347;background:#ff9f1c1c;text-shadow:none}
+.pc .cc .price{opacity:1;bottom:-12px;padding:3px 14px;border:1px solid #4bb893;background:#15523e;color:#e2fcf3;font:800 12px var(--display)}
+.pc .cc.picked .price{border-color:#3fd77f}
+.pc .cc .tick{width:28%;height:auto;aspect-ratio:1;background:#27c26a;border:3px solid #ffffff;color:#ffffff;box-shadow:0 4px 14px #00000088}
+.pc .cc .tick svg{width:60%;height:60%;stroke-width:3.5}
+
+/* arrows and Take */
+.pc .mnav{gap:14px}
+.pc .mnav .ghost{width:46px;height:46px;flex:none;padding:0;border-radius:50%;border:1.5px solid #5bc9a4;background:#15523e;color:#ffffff;display:grid;place-items:center}
+.pc .mnav .ghost svg{width:22px;height:22px;stroke-width:3}
+.pc #takebtn{width:clamp(160px,44vw,220px);padding:12px 16px;border-radius:99px;border:1.5px solid #5bc9a4;background:#1e634c;color:#ffffff;font:800 15px var(--display);box-shadow:none}
+.pc #takebtn.on{border-color:#ff5d73;color:#ffd0d6}
+.pc #takebtn:disabled{opacity:1;color:#aad6c7}
+
+/* the four slots */
+.pc .slots{gap:10px}
+.pc .slot{width:34px;height:34px;padding:0;border-radius:9px;border:1.5px dashed #5bc9a4;background:none;box-shadow:none;display:grid;place-items:center;animation:none}
+.pc .slot.on{border:0;background:#27c26a;color:#ffffff}
+.pc .slot.on svg{width:20px;height:20px;stroke-width:3.5}
+.pc .slot:disabled{opacity:1;cursor:default}
+
+/* Cancel / Confirm */
+.pc .macts{max-width:440px;gap:12px}
+.pc .macts button{padding:15px 12px;border-radius:12px;font:800 16px var(--display)}
+.pc .macts .ghost{flex:0 0 40%;border:1.5px solid #5bc9a4;background:#15523e;color:#d4faed}
+.pc #mbuy{flex:1;background:linear-gradient(90deg,#ffe58a,#f6a623);color:#2b1a00;box-shadow:none}
+.pc #mbuy:disabled{background:#ffffff14;color:#8db8a9}
+
+/* short screens: tighter */
+@media(max-height:640px){.pc .demo{display:none}.pc .mh small{font-size:12px}.pc .macts button{padding:12px}}

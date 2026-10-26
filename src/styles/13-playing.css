@@ -1,0 +1,91 @@
+/* While the player has cards in a running round: no card picking, the cards panel takes the room. */
+.arena.playing .mpick,.arena.playing .leftp .qpick,.arena.playing .leftp>button{display:none!important}
+@media(min-width:900px){
+ .arena.playing .leftp{height:20.6%!important}
+ .arena.playing .tkp{top:32.8%!important;height:66%!important}
+}
+@media(max-width:899px){
+ /* cards sit right under the machine; the empty strip below the podium is trimmed so they show sooner */
+ .arena.playing .tkp{order:1}
+ .arena.playing .banner{order:2}
+ .arena.playing .hero{aspect-ratio:1/1.02}
+ .arena.playing .tkp{margin-top:-6px}
+}
+/* Phone, round running without cards of this round (none, or saved for the next one): hide the empty cards panel, show the called numbers there. */
+@media(max-width:899px){
+ .arena.watching .tkp{display:none}
+ .arena.watching .calledp{order:1}
+}
+/* Phone: machine sits higher, trimming the empty sky above the globe, so everything below moves up too. */
+@media(max-width:899px){
+ .hero{aspect-ratio:1/1.19;margin-top:-4px}
+ .hero .gobj{top:-3.5%}
+ .arena.playing .hero{aspect-ratio:1/.97}
+}
+/* the free-space star on the player's cards: smaller than the number marks */
+.tkp .tk .grid5 .c.f{height:70%!important}
+/* cells of a completed line on the player's cards: gold ring so the line that won is easy to spot */
+.tkp .tk .grid5 .c.m.w{box-shadow:0 0 0 3px #ffd84d,0 0 14px #ffd84d!important;z-index:3}
+.tkp .tk .grid5 .c.f.w{filter:drop-shadow(0 0 6px #ffd84d) brightness(1.15)}
+/*
+ * Phone, playing: the cards panel is made compact. The machine keeps its full size (see below)
+ * and the cards follow under it, so the page scrolls on short screens.
+ */
+@media(max-width:899px){
+ .arena.playing{--cf:clamp(10.5px,min(3.4vw,2.1svh),15px)}
+ /* the cards panel is about 100px + 20 card-font units tall; the top bar and gaps take ~235px */
+ .arena.playing .tkp{padding:.5em .55em .55em}
+ .arena.playing .tkp .tabs{gap:.35em;margin-bottom:.75em}
+ .arena.playing .tkp .tab{padding:.25em .1em;font-size:.72em}
+ .arena.playing .tkp .tab.all{width:3em}
+ .arena.playing .tkp .frame{padding:.8em .4em .4em}
+ .arena.playing .tkp .tickets{gap:.4em}
+ .arena.playing .tkp .tk{min-height:0;padding:.3em;flex:1 1 calc(50% - .2em)}
+ .arena.playing .tkp .tk .grid5{gap:.15em;font-size:var(--cf)}
+ .arena.playing .tkp .tk .grid5 .c{height:1.6em;min-height:0}
+ .arena.playing .tkp .tk .grid5 .hd{font-size:.72em;line-height:1.3}
+}
+/* Phone, one card picked: it fills the frame, so give it bigger cells */
+@media(max-width:899px){
+ .arena.playing .tkp .tk:only-child .grid5{font-size:clamp(14px,4.4vw,19px)}
+ .arena.playing .tkp .tk:only-child .grid5 .c{height:1.9em}
+}
+/*
+ * Phones: a lighter show. The running lights redraw four full-size pictures every frame and the
+ * halo re-blurs while it spins; together with the machine that is more than a phone's graphics
+ * memory can hold through a whole round.
+ */
+@media(max-width:899px){
+ /* svg.pipes in 02 is more specific than .flows alone, which kept the lights running on phones */
+ .gobj svg.flows{display:none}
+ .halo{animation:none!important;transform:none}
+ .hero .gobj .pb{filter:none}
+ .toast{text-shadow:0 3px 0 #b45309}
+ .arena.playing .toast{font-size:clamp(14px,4.5vw,30px)}
+}
+/*
+ * Phone, playing: the machine stays full width and shows the whole podium, the same size as before
+ * the cards were bought; only the empty strip under the podium is trimmed.
+ */
+@media(max-width:899px){
+ .arena.playing .hero{width:100%;height:auto;aspect-ratio:1/1.08}
+}
+/* Phone: the drawn balls in the holes get bigger, with bigger numbers, so they can be read at a glance. */
+@media(max-width:899px){
+ .hero .gobj .tb{width:6.3em;height:6.3em}
+ .hero .gobj .tray .tb{margin:-3.15em 0 0 -3.15em}
+ .hero .gobj .tb small{font-size:1.15em}
+ .hero .gobj .tb b{font-size:1.85em;letter-spacing:-.03em}
+ .hero .gobj .tb::before{inset:12%}
+}
+/*
+ * Phones, while balls are drawn: no blurred halo, no per-ball label layer, no glowing sparks and
+ * no pulsing glow on the next-ball slot, so a draw adds almost nothing to graphics memory.
+ */
+@media(max-width:899px){
+ .halo{display:none}
+ .hero .gobj .pb .lb{will-change:auto}
+ .hero .gobj .spark{box-shadow:none}
+ .hero .gobj .spout.fire{box-shadow:0 0 0 .2em #ffe08a,0 0 0 .36em #b9770e,inset 0 .5em .8em #000000cc}
+ .calledp .ball.nx{animation:none!important}
+}

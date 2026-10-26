@@ -1,0 +1,89 @@
+/*
+ * BINGO35 cards: ivory paper tickets in a gold frame with dark ink numbers and round daubs,
+ * in the card picker and in the player's card panel (QuickBingo uses teal cards with square marks).
+ */
+/* ---- shared card look ---- */
+.pc .cc,.tkp .tk:not(.ghost){background:linear-gradient(180deg,#fffaf0,#f4ead0 60%,#eadcb4)!important;border:2px solid #c9a24a!important;border-radius:12px!important;box-shadow:inset 0 0 0 3px #fffaf0,inset 0 0 0 4px #c9a24a66,0 10px 24px #000b!important}
+.pc .cc .grid5,.tkp .tk:not(.ghost) .grid5{gap:2px!important}
+.pc .cc .hd,.tkp .tk .hd{border-radius:6px!important;color:#fff!important;text-shadow:0 1px 0 #0005!important;box-shadow:inset 0 1px 0 #fff5!important}
+.pc .cc .hd.h0,.tkp .tk .hd.h0{background:linear-gradient(#4f8dff,#1f5fd6)!important}
+.pc .cc .hd.h1,.tkp .tk .hd.h1{background:linear-gradient(#ff5a6a,#c81e36)!important}
+.pc .cc .hd.h2,.tkp .tk .hd.h2{background:linear-gradient(#f8d77c,#c8932c)!important;color:#3a2504!important;text-shadow:none!important}
+.pc .cc .hd.h3,.tkp .tk .hd.h3{background:linear-gradient(#4ade80,#16a34a)!important}
+.pc .cc .hd.h4,.tkp .tk .hd.h4{background:linear-gradient(#34d399,#0f8a5f)!important}
+.pc .cc .c,.tkp .tk:not(.ghost) .grid5 .c{position:relative;isolation:isolate;background:none!important;border:0!important;border-radius:0!important;box-shadow:inset 0 -1px 0 #c9a24a40!important;color:#0b3a26!important;text-shadow:none!important;font-family:var(--display)!important}
+.pc .cc .c.f,.tkp .tk:not(.ghost) .grid5 .c.f{color:#c8932c!important;filter:none!important}
+.tkp .tk:not(.ghost) .grid5 .c.f::before{content:'★'!important;display:grid!important;place-items:center;font-size:15px!important;color:#f8d77c!important;text-shadow:none!important;position:absolute!important;inset:10%!important;z-index:-1;border-radius:50%;background:radial-gradient(circle at 50% 35%,#14603f,#06301f)!important}
+
+/* ---- card picker ---- */
+.modal.pc{background:radial-gradient(circle at 50% 35%,#0d3a28f2,#010805f8 75%)!important}
+.pc .mring div{background:#06150f!important;color:#f8d77c!important;font-family:var(--crown)!important}
+.pc .demo{color:#c9b98a!important}
+.pc .mh h2{font-family:var(--crown)!important;font-weight:900!important;color:#fff6dc!important;letter-spacing:.02em}
+.pc .mh small{color:#c9b98a!important}
+.pc .cc.mid{box-shadow:inset 0 0 0 3px #fffaf0,inset 0 0 0 4px #c9a24a66,0 0 0 2px #f8d77c,0 0 26px #f3c45a77,0 14px 30px #000c!important}
+.pc .cc.picked,.pc .cc.picked.mid{border-color:#1f9e5a!important;box-shadow:inset 0 0 0 3px #fffaf0,inset 0 0 0 4px #1f9e5a88,0 0 0 2px #2fbf71,0 14px 30px #000c!important}
+.pc .cc .c.hot{color:#c2410c!important;background:none!important}
+.pc .cc .c.hot::after{content:'';position:absolute;right:12%;top:14%;width:.32em;height:.32em;border-radius:50%;background:#f97316}
+.pc .cc .price{background:linear-gradient(180deg,#f8dc8a,#e2ad3e 55%,#b98222)!important;border:1px solid #fff1b8!important;color:#2b1a00!important}
+.pc .cc .tick{background:#1f9e5a!important;border-color:#f8d77c!important}
+.pc .mnav .ghost{background:#06150f!important;border:1.5px solid #c9a24a!important;color:#f8d77c!important}
+.pc #takebtn{background:#06150f!important;border:1.5px solid #e2ad3e!important;color:#fff3c4!important;box-shadow:0 0 14px #e2ad3e33!important}
+.pc #takebtn.on{border-color:#ff5a6a!important;color:#ffd0d6!important}
+.pc .slot{border-color:#c9a24a!important}
+.pc .slot.on{background:linear-gradient(180deg,#1b7a50,#0a3b26)!important;border:1px solid #f8d77c!important;color:#f8d77c!important}
+.pc .macts .ghost{background:#06150f!important;border:1.5px solid #c9a24a!important;color:#f4efe0!important}
+.pc #mbuy{background:linear-gradient(180deg,#f8dc8a,#e2ad3e 55%,#b98222)!important;color:#2b1a00!important}
+.pc #mbuy:disabled{background:#ffffff0f!important;color:#7f8f86!important;border:1px solid #c9a24a33!important}
+
+/* ---- player's card panel ---- */
+.tab{background:#06150f!important;border:1px solid #c9a24a66!important;color:#cfc6a8!important;box-shadow:none!important}
+.tab.on{background:linear-gradient(180deg,#f8dc8a,#e2ad3e 55%,#b98222)!important;border-color:#fff1b8!important;color:#2b1a00!important}
+.dots i{background:#ffffff26!important}
+.dots i.on{background:#2fbf71!important}
+.tab.on .dots i{background:#7a4f0c55!important}.tab.on .dots i.on{background:#0f5536!important}
+.badge{background:linear-gradient(180deg,#f8dc8a,#e2ad3e)!important;color:#2b1a00!important}
+.tkp .tk:not(.ghost) .tkh{color:#0b3a26!important}
+.tkp .tk:not(.ghost) .tkh b{color:#0b3a26!important;text-shadow:none!important}
+.tkp .tk:not(.ghost) .tkh .tkprice{color:#7a5a1a!important}
+.tkp .tk:not(.ghost) .tkh .togo{background:#0b3a26!important;color:#f8d77c!important;padding:.1em .55em!important;border-radius:99px}
+/* drawn numbers: a round daub in the column colour, number in white */
+.tkp .tk:not(.ghost) .grid5 .c.m{color:#fff!important;background:none!important}
+.tkp .tk:not(.ghost) .grid5 .c.m::before{content:''!important;position:absolute!important;inset:6%!important;width:auto!important;height:auto!important;transform:none!important;z-index:-1;border-radius:50%!important;border:0!important;background:radial-gradient(circle at 40% 32%,#ffffff55,#0000 45%),var(--dab,#1f9e5a)!important;box-shadow:0 1px 3px #0006!important}
+.tkp .tk:not(.ghost) .grid5 .c.m::after{display:none!important}
+.tkp .tk .grid5 .c.col0{--dab:#1f5fd6}.tkp .tk .grid5 .c.col1{--dab:#c81e36}.tkp .tk .grid5 .c.col2{--dab:#d97706}.tkp .tk .grid5 .c.col3{--dab:#16a34a}.tkp .tk .grid5 .c.col4{--dab:#0f8a5f}
+/* one to go: a dashed gold ring; winning line: gold daubs */
+.tkp .tk:not(.ghost) .grid5 .c.need:not(.m){box-shadow:inset 0 0 0 2px #e2ad3e!important;border-radius:50%!important;animation:none}
+.tkp .tk:not(.ghost) .grid5 .c.w{color:#3a2504!important;box-shadow:none!important}
+.tkp .tk:not(.ghost) .grid5 .c.w:not(.f)::before{background:radial-gradient(circle at 40% 32%,#fffbe6,#f8d77c 55%,#d9a23c)!important;box-shadow:0 0 0 2px #b98222,0 0 10px #f3c45a!important}
+.tkp .tk.win{box-shadow:inset 0 0 0 3px #fffaf0,inset 0 0 0 4px #c9a24a,0 0 0 2px #f8d77c,0 0 22px #f3c45a88!important}
+/* placeholder cards before buying */
+.tkp .tk.ghost{background:#06150f99!important;border:1px dashed #c9a24a55!important;box-shadow:none!important}
+.tkp .tk.ghost .hd{opacity:.35}
+/* game starts in */
+.tkp .start{background:linear-gradient(90deg,#0000,#06150fee 30%)!important}
+.tkp .start span,.tkp .start em{color:#f8d77c!important}
+.sring b{background:#06150f!important;color:#fff6dc!important;font-family:var(--crown)!important}
+/* phone hides the cell pseudo layers and shrinks the free cell's text: bring the daubs and stars back */
+.tkp .tk:not(.ghost) .grid5 .c.m::before,.tkp .tk:not(.ghost) .grid5 .c.f::before{display:grid!important}
+.pc .cc .c.f{font-size:calc(var(--cw) * .1)!important;color:#0f5536!important}
+@media(max-width:599px){
+.arena .tkp .tk:not(.ghost) .grid5 .hd.h0{color:#1f5fd6!important}
+.arena .tkp .tk:not(.ghost) .grid5 .hd.h1{color:#c81e36!important}
+.arena .tkp .tk:not(.ghost) .grid5 .hd.h2{color:#b45309!important}
+.arena .tkp .tk:not(.ghost) .grid5 .hd.h3{color:#16a34a!important}
+.arena .tkp .tk:not(.ghost) .grid5 .hd.h4{color:#0f8a5f!important}
+.arena .tkp .tk:not(.ghost) .grid5 .hd{text-shadow:none!important;font-weight:900!important}
+}
+/* keep daubs and the free-space disc round whatever the cell's shape */
+.tkp .tk:not(.ghost) .grid5 .c.m::before,.tkp .tk:not(.ghost) .grid5 .c.f::before{inset:auto!important;left:50%!important;top:50%!important;width:auto!important;height:86%!important;max-width:96%!important;aspect-ratio:1!important;transform:translate(-50%,-50%)!important}
+/* marked numbers: a solid tile in the column colour filling the cell, with a big bold white number,
+   so a drawn number reads at a glance on phone, tablet and desktop */
+.tkp .tk:not(.ghost) .grid5 .c.m{color:#fff!important;font-weight:900!important;text-shadow:0 1px 2px #0009!important;z-index:0}
+.tkp .tk:not(.ghost) .grid5 .c.m::before{inset:2px!important;left:2px!important;top:2px!important;width:auto!important;height:auto!important;max-width:none!important;aspect-ratio:auto!important;transform:none!important;border-radius:9px!important;background:linear-gradient(180deg,#ffffff38,#0000 55%),var(--dab,#1f9e5a)!important;box-shadow:inset 0 0 0 1.5px #ffffff59,inset 0 -2px 0 #0003,0 2px 4px #0005!important}
+.tkp .tk .grid5 .c.col2.m{--dab:#c2410c}
+/* winning line: gold tiles with dark numbers */
+.tkp .tk:not(.ghost) .grid5 .c.m.w{color:#3a2504!important;text-shadow:0 1px 0 #fff8!important}
+.tkp .tk:not(.ghost) .grid5 .c.m.w::before{background:linear-gradient(180deg,#fffbe6,#f8d77c 50%,#d9a23c)!important;box-shadow:inset 0 0 0 2px #b98222,0 0 10px #f3c45a!important}
+/* one to go: a bold gold outline round the cell */
+.tkp .tk:not(.ghost) .grid5 .c.need:not(.m){box-shadow:inset 0 0 0 2.5px #d99a1e!important;border-radius:9px!important;background:#f8d77c33!important;outline:0!important}

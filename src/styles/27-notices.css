@@ -1,0 +1,16 @@
+/*
+ * BINGO35 notices: host chat lines stay in the chat, and the saved-cards notice drops in at the
+ * top of the screen under the logo bar, away from the stake panel and the Pick-cards button.
+ */
+.host{background:linear-gradient(180deg,#0f4a33,#072a1c)!important;border:1.5px solid #e2ad3e!important;box-shadow:0 10px 30px #000a,0 0 18px #e2ad3e33!important}
+.host .hav{background:linear-gradient(180deg,#f8dc8a,#b98222)!important;color:#2b1a00!important}
+.host .hname{color:#f8d77c!important}
+@media(max-width:899px){
+ .host{top:max(62px,calc(env(safe-area-inset-top) + 56px))!important;bottom:auto!important;left:12px!important;right:12px!important;width:auto!important;transform:none!important;animation:noticein .35s ease-out both,noticeout .3s 6.2s ease-in forwards!important}
+}
+@media(min-width:900px){.host{top:84px!important;bottom:auto!important;animation:noticeinc .35s ease-out both,noticeoutc .3s 6.2s ease-in forwards!important}}
+@keyframes noticein{from{transform:translateY(-40px);opacity:0}}
+@keyframes noticeout{to{transform:translateY(-40px);opacity:0}}
+@keyframes noticeinc{from{transform:translate(-50%,-40px);opacity:0}}
+@keyframes noticeoutc{to{transform:translate(-50%,-40px);opacity:0}}
+@media(prefers-reduced-motion:reduce){.host{animation:none!important}}

@@ -1,0 +1,41 @@
+/* One short message docked at the bottom of the screen, about saved cards. */
+.host{--m:#97f3d5;position:fixed;z-index:70;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(480px,calc(100vw - 24px));display:flex;align-items:center;gap:12px;padding:12px 44px 12px 12px;border-radius:16px;background:#113f31;border:1.5px solid var(--m);box-shadow:0 10px 30px #000000aa;cursor:pointer;animation:hostin .35s ease-out both,hostout .3s 6.2s ease-in forwards}
+@keyframes hostin{from{transform:translate(-50%,40px);opacity:0}}
+@keyframes hostout{to{transform:translate(-50%,40px);opacity:0}}
+.hav{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--m) 20%,#00000000);color:var(--m)}
+.hav svg{width:22px;height:22px}
+.hbub{flex:1;min-width:0}
+.hname{display:block;font:800 11px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--m);margin-bottom:2px}
+.hbub p{margin:0;font:700 clamp(14px,3.9vw,17px)/1.3 var(--display);color:#ffffff}
+.hx{position:absolute;top:50%;right:8px;margin-top:-14px;width:28px;height:28px;padding:0;border-radius:50%;display:grid;place-items:center;background:#ffffff14;color:#d4faed;box-shadow:none}
+.hx svg{width:16px;height:16px}
+/* phone: clear of the settings button in the corner */
+@media(max-width:599px){
+ .host{left:12px;right:12px;width:auto;transform:none;bottom:max(70px,calc(env(safe-area-inset-bottom) + 64px))}
+ @keyframes hostin{from{transform:translateY(40px);opacity:0}}
+ @keyframes hostout{to{transform:translateY(40px);opacity:0}}
+}
+/* desktop: centred over the stage, under the machine */
+@media(min-width:900px){.host{bottom:4%}}
+@media(prefers-reduced-motion:reduce){.host{animation:none}}
+.host.saved{--m:#46eaa2}
+
+/* Cards saved for the next round: a strip at the top of the cards panel, on every screen. */
+.tkp .saved{display:flex;align-items:center;gap:10px;margin:0 0 .6em;padding:10px 12px;border-radius:12px;background:#46eaa214;border:1.5px dashed #46eaa299;color:#ffffff}
+.tkp .saved .sic{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#46eaa226;color:#46eaa2}
+.tkp .saved .sic svg{width:18px;height:18px}
+.tkp .saved>div{flex:1;min-width:0}
+.tkp .saved b{display:block;font:800 13px/1.2 var(--display)}
+.tkp .saved small{display:block;margin-top:2px;font-size:12px;line-height:1.25;color:#aad6c7}
+.tkp .saved .schips{display:flex;gap:4px;flex:none}
+.tkp .saved .schips i{font:800 11px var(--display);font-style:normal;padding:3px 6px;border-radius:6px;background:#46eaa226;color:#c5f9e2}
+.tkp .saved .schips i::before{content:"KES "}
+@media(max-width:599px){.tkp .saved .schips{display:none}}
+@media(min-width:900px){.tkp .saved{padding:7px 10px;margin-bottom:.4em}.tkp .saved .sic{width:28px;height:28px}.tkp .saved b{font-size:12px}.tkp .saved small{font-size:11px}.tkp .saved .schips{display:none}}
+/* Phone, round running with cards saved for the next one: only the saved strip shows, above the called numbers. */
+@media(max-width:899px){
+ .arena.watching.queued .tkp{display:block;order:1;padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+ .arena.watching.queued .tkp>:not(.saved){display:none!important}
+ .arena.watching.queued .tkp .saved{margin:0}
+ .arena.watching.queued .calledp{order:2}
+}

@@ -1,0 +1,47 @@
+/*
+ * Settings: a card under the gear (a sheet at the bottom on phones). One 16px gutter runs down
+ * the whole card, so the header icon lines up with the row icons and the close button with the
+ * switches. Each row is one button: icon, label and hint, switch.
+ */
+.spanel{--pad:16px;position:fixed;z-index:91;top:var(--st,64px);left:var(--sl,12px);width:min(360px,calc(100vw - 24px));padding:6px 0 8px;border-radius:18px;outline:0;
+ background:linear-gradient(180deg,#135642,#0c3327) padding-box,linear-gradient(140deg,#5fedcd,#46eaa2 50%,#f6b93b) border-box;border:1.5px solid #00000000;box-shadow:0 18px 50px #000000cc;
+ transform-origin:top left;animation:sin .22s cubic-bezier(.2,1.2,.4,1)}
+@keyframes sin{from{transform:translateY(-6px) scale(.97);opacity:0}}
+.sback{position:fixed;inset:0;z-index:90;background:#00000000}
+
+.shead{display:flex;align-items:center;gap:12px;padding:8px var(--pad) 12px;border-bottom:1px solid #ffffff14}
+.shead h2{flex:1;margin:0;font:800 17px/1.2 var(--display);color:#f0fdf9;letter-spacing:.01em}
+.shead .sico{background:#f6b93b1f;color:var(--gold2)}
+.shead .sx{flex:none;width:44px;height:28px;margin:0;padding:0;border:0;border-radius:99px;display:grid;place-items:center;background:#ffffff12;color:#d4faed;cursor:pointer;box-shadow:none}
+@media(hover:hover){.shead .sx:hover{background:#ffffff22;color:#ffffff}}
+.shead .sx svg{width:16px;height:16px}
+
+.slist{list-style:none;margin:0;padding:4px 0 0}
+.slist li+li .srow{border-top:1px solid #ffffff0d}
+.srow{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;margin:0;padding:10px var(--pad);border:0;border-radius:0;background:none;box-shadow:none;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:background .15s}
+@media(hover:hover){.srow:hover{background:#ffffff08}}
+.srow:focus-visible{outline:2px solid #ffffff;outline-offset:-4px;border-radius:12px}
+
+.sico{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#ffffff0f;color:#8dc9b4;transition:background .2s,color .2s}
+.sico svg{width:19px;height:19px}
+.srow.on .sico{background:color-mix(in srgb,var(--sc) 22%,#00000000);color:var(--sc)}
+
+.stx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.stx b{font:700 15px/1.25 var(--display);color:#f0fdf9}
+.stx small{font:600 12.5px/1.35 var(--body);color:var(--mut)}
+
+/* the switch: a 44x28 track, knob slides right and the track takes the row's colour when on */
+.sw{position:relative;flex:none;width:44px;height:28px;border-radius:99px;background:#2a5c4b;box-shadow:inset 0 0 0 1px #ffffff14;transition:background .2s}
+.sw i{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#aaddcb;box-shadow:0 1px 3px #00000066;transition:transform .2s cubic-bezier(.3,1.4,.5,1),background .2s}
+.srow.on .sw{background:var(--sc)}
+.srow.on .sw i{transform:translateX(16px);background:#ffffff}
+
+/* phones: a sheet along the bottom edge, full width, clear of the home indicator */
+@media(max-width:599px){
+ .sback{background:#020c09b3}
+ .spanel{--pad:20px;top:auto;left:0;right:0;bottom:0;width:100%;max-height:85svh;overflow:auto;border-radius:22px 22px 0 0;border-bottom:0;padding:8px 0 max(12px,env(safe-area-inset-bottom));transform-origin:bottom center;animation:sup .25s cubic-bezier(.2,1,.4,1)}
+ .spanel::before{content:"";display:block;width:40px;height:4px;margin:2px auto 8px;border-radius:99px;background:#ffffff33}
+ .srow{min-height:68px}
+}
+@keyframes sup{from{transform:translateY(40%);opacity:0}}
+@media(prefers-reduced-motion:reduce){.spanel{animation:none}}

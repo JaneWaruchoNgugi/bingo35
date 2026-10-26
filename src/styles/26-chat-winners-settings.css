@@ -1,0 +1,38 @@
+/* BINGO35 chat, recent winners and settings: avatar chat rows, crowned winner rows, a gold-trimmed settings card. */
+/* chat */
+.chatp .chat p{display:flex;align-items:flex-start;gap:.55em;margin:0 0 .45em}
+.chatp .cav{flex:none;width:1.9em;height:1.9em;border-radius:50%;display:grid;place-items:center;font:800 .78em var(--display);font-style:normal;color:#fff;background:hsl(var(--h) 55% 32%);box-shadow:inset 0 0 0 1.5px #c9a24a99}
+.chatp .cmsg{flex:1;min-width:0;padding:.35em .65em;border-radius:.2em .9em .9em .9em;background:#ffffff0a;border:1px solid #c9a24a26;line-height:1.35}
+.chatp .cmsg b{display:block;font:700 .78em var(--display);color:#f8d77c!important}
+.chatp .cmsg span{color:#e9e3cf}
+.chatp p.chost .cav{background:linear-gradient(180deg,#f8dc8a,#b98222);color:#2b1a00}
+.chatp p.chost .cmsg{background:#e2ad3e14;border-color:#e2ad3e55}
+.chatp p.you{flex-direction:row-reverse}
+.chatp p.you .cmsg{border-radius:.9em .2em .9em .9em;background:#1f9e5a22;border-color:#2fbf7155;text-align:right}
+.chatp .chat::-webkit-scrollbar{width:6px}.chatp .chat::-webkit-scrollbar-thumb{background:#c9a24a66;border-radius:6px}.chatp .chat::-webkit-scrollbar-track{background:transparent}
+.chatp .chat{scrollbar-color:#c9a24a66 transparent;scrollbar-width:thin}
+
+/* recent winners */
+.winp .wgroup{font:800 .66em var(--display)!important;letter-spacing:.16em;text-transform:uppercase;color:#c9b98a!important;margin:.6em 0 .35em!important}
+.winp .win-row{display:flex!important;align-items:center;gap:.6em;padding:.5em .65em!important;margin-bottom:.35em;border-radius:10px;background:#06150f;border:1px solid #c9a24a33!important;border-top:1px solid #c9a24a33!important}
+.winp .win-row svg{flex:none;width:1.15em;height:1.15em;color:#f8d77c}
+.winp .win-row span{flex:1;min-width:0;color:#f4efe0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.winp .win-row em{flex:none;font:800 .8em var(--display);font-style:normal;padding:.2em .6em;border-radius:99px;background:linear-gradient(180deg,#f8dc8a,#e2ad3e 55%,#b98222);color:#2b1a00!important}
+
+/* settings */
+#snd{border:1px solid #c9a24acc!important;background:radial-gradient(circle,#13281e,#040e0a)!important;color:#f8d77c!important;box-shadow:0 0 12px #e2ad3e33!important}
+.spanel{background:linear-gradient(180deg,#0a1f16,#04100b)!important;border:1px solid #c9a24acc!important;box-shadow:0 0 0 4px #06150f,0 0 0 5px #c9a24a55,0 20px 50px #000d!important}
+.spanel .shead{border-bottom:1px solid #c9a24a44!important}
+.spanel .shead h2{font:900 18px/1.2 var(--crown)!important;letter-spacing:.06em;color:#f8d77c!important}
+.spanel .shead .sico{background:none!important;box-shadow:inset 0 0 0 1.5px #c9a24a;color:#f8d77c!important;border-radius:50%!important}
+.spanel .shead .sx{background:#06150f!important;border:1px solid #c9a24a88!important;color:#f8d77c!important}
+.spanel .slist li+li .srow{border-top:1px solid #c9a24a26!important}
+.spanel .srow:hover{background:#e2ad3e0d!important}
+.spanel .sico{border-radius:50%!important;background:#06150f!important;box-shadow:inset 0 0 0 1px #c9a24a55;color:#9fb3a7!important}
+.spanel .srow.on .sico{background:#e2ad3e1f!important;box-shadow:inset 0 0 0 1.5px #e2ad3e;color:#f8d77c!important}
+.spanel .stx b{color:#f4efe0!important}
+.spanel .stx small{color:#a9b8ae!important}
+.spanel .sw{width:50px!important;height:26px!important;border-radius:8px!important;background:#06150f!important;box-shadow:inset 0 0 0 1px #c9a24a66!important}
+.spanel .sw i{top:3px!important;left:3px!important;width:20px!important;height:20px!important;border-radius:5px!important;background:#5d6b63!important}
+.spanel .srow.on .sw{background:linear-gradient(180deg,#f8dc8a,#e2ad3e 55%,#b98222)!important;box-shadow:inset 0 0 0 1px #fff1b8!important}
+.spanel .srow.on .sw i{transform:translateX(24px)!important;background:#0a3b26!important}

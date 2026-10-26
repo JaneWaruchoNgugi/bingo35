@@ -1,0 +1,43 @@
+/*
+ * Desktop polish: the stage scales to fill the window, the side columns are the same width,
+ * the status panel gives the chips and ticket their own rows, and the cards panel shows four
+ * faded cards until the player buys some.
+ */
+.ghosts{display:none}
+.wgroup{font:800 .7em var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding:.6em 0 .2em}
+.wgroup:first-child{padding-top:0}
+.winempty{padding:.2em 0;line-height:1.45}
+@media(min-width:900px){
+ /* fit the whole stage in the window, whichever side runs out first; the stage art fills the margins */
+ body{background:linear-gradient(#020c09d9,#020c09d9),var(--stage) center/cover fixed #020c09}
+ .arena{width:min(100vw,calc(100svh * 1600 / 901));max-width:none;margin:max(0px,calc((100svh - 100vw * 901 / 1600) / 2)) auto 0}
+
+ /* status panel: countdown beside the counts, then the chips and the ticket button full width */
+ .leftp{height:auto!important;grid-template-columns:6.8em 1fr;grid-template-rows:auto auto auto auto auto!important;row-gap:.2em}
+ .leftp .ring{grid-row:2/4!important;width:6.8em}
+ .leftp .row{grid-column:2;align-self:center}
+ .leftp .qpick{grid-column:1/-1!important;margin-top:.6em!important;gap:.5em!important}
+ .leftp .qhead{justify-content:flex-start;gap:.7em!important}
+ .leftp .qmeta{font-size:.68em!important}
+ .leftp .qchips{gap:1em;padding-inline:.6em}
+ .leftp .qchip{font-size:.95em!important;max-width:4.3em}
+ .leftp .pickbtn{grid-column:1/-1!important;margin-top:.55em;font-size:1em!important;padding:.65em 1em!important}
+ .arena:not(.playing) .tkp{top:48.9%!important;height:49.9%!important}
+
+ /* right column as wide as the left one, called numbers given more room */
+ .calledp,.chatp,.winp{left:73.75%!important;width:25%!important}
+ .calledp{top:11.1%!important;height:30.6%!important}
+ .chatp{top:43%!important;height:25.6%!important}
+ .winp{top:69.9%!important;height:28.9%!important}
+ .calledp .balls{gap:.45em}
+ .calledp .ball{font-size:.95em}
+
+ /* no cards yet: tabs hidden, four faded cards with the message over them */
+ .tkp.nocards .frame{height:100%}
+ .tkp.nocards .tickets{display:block!important;position:relative;height:100%}
+ .ghosts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:.7em;height:100%;opacity:.28}
+ .tk.ghost{display:flex;flex-direction:column;padding:.4em}
+ .tk.ghost .grid5{flex:1;grid-template-rows:auto repeat(5,1fr)}
+ .tk.ghost .c{aspect-ratio:auto;border:1px dashed #4bb08d;background:#0b3627}
+ .tkp.nocards .ghosts+.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1em;padding:1.5em;text-align:center;font-size:1.1em;color:#e2fcf3;background:radial-gradient(closest-side,#0a3023f2,#0a302300)}
+}
